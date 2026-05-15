@@ -1,0 +1,16 @@
+
+---
+- name: Deploy Java App
+  hosts: appserver
+
+  tasks:
+
+    - name: Create deploy directory
+      file:
+        path: /opt/devops-lab/
+        state: directory
+
+    - name: Copy Jar File to target
+      copy:
+        src: /var/lib/jenkins/workspace/Devops_Ansible/devops-lab2/target/devops-lab2-1.0-SNAPSHOT.jar
+        dest: /opt/devops-lab/myapp.jar
